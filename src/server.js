@@ -12,7 +12,7 @@ app.get('/team/:id', (req, res) => {
     const id = req.params.id
     const searchResult = teamMembers.find((member) => member.id === +id)
     if (searchResult) {
-        res.send(JSON.stringify(searchResult))
+        res.send(searchResult)
     } else {
         res.status(404).send('ID not found.')
     }
