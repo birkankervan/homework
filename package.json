@@ -28,6 +28,9 @@
     "*.js": [
       "eslint --fix --ext .js src",
       "prettier --write "
+    ],
+    "*.json": [
+      "prettier --write"
     ]
   },
   "type": "module"
