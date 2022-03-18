@@ -13,7 +13,8 @@
     "start": "nodemon ./src/server.js",
     "prepare": "husky install",
     "prettier": "prettier --write .",
-    "lint": "lint-staged"
+    "lint": "lint-staged",
+    "eslint": "eslint src"
   },
   "devDependencies": {
     "eslint": "^8.10.0",

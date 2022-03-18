@@ -4,10 +4,11 @@
     "browser": true,
     "node": true
   },
-  "extends": ["eslint:recommended", "prettier"],
+  "extends": ["prettier"],
   "plugins": ["prettier"],
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module"
-  }
+  },
+  "rules": {}
 }
