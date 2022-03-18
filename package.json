@@ -1,35 +1,35 @@
 {
-    "name": "homework",
-    "version": "1.0.0",
-    "description": "Nodejs app",
-    "main": "server.js",
-    "author": "Emre Birkan Kervan",
-    "license": "MIT",
-    "private": false,
-    "dependencies": {
-        "express": "^4.17.3"
-    },
-    "scripts": {
-        "start": "nodemon ./src/server.js",
-        "prepare": "husky install",
-        "prettier": "prettier --write .",
-        "lint": "lint-staged"
-    },
-    "devDependencies": {
-        "eslint": "^8.10.0",
-        "eslint-config-prettier": "^8.5.0",
-        "eslint-plugin-prettier": "^4.0.0",
-        "husky": "^7.0.4",
-        "lint-staged": "^12.3.5",
-        "nodemon": "^2.0.15",
-        "prettier": "^2.5.1"
-    },
-    "lint-staged": {
-        "*.js": [
-            "eslint --fix",
-            "yarn prettier --write ."
-        ],
-        "*.json": "prettier --write ."
-    },
-    "type": "module"
+  "name": "homework",
+  "version": "1.0.0",
+  "description": "Nodejs app",
+  "main": "server.js",
+  "author": "Emre Birkan Kervan",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "scripts": {
+    "start": "nodemon ./src/server.js",
+    "prepare": "husky install",
+    "prettier": "prettier --write .",
+    "lint": "lint-staged"
+  },
+  "devDependencies": {
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.5",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "yarn prettier --write ."
+    ],
+    "*.json": "prettier --write ."
+  },
+  "type": "module"
 }
