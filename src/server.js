@@ -1,7 +1,7 @@
 import express from 'express'
 import teamMembers from '../data/data.js'
 
-var PORT = 3000
+const PORT = 3000
 const app = express()
 
 app.get('/team', (req, res) => {
