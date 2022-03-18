@@ -30,7 +30,7 @@
       "prettier --write "
     ],
     "*.json": [
-      "prettier --write"
+      "prettier --write "
     ]
   },
   "type": "module"
