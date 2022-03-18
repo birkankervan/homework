@@ -55,4 +55,11 @@ export default [
     birthdate: '19.02',
     title: 'Lead Frontend Developer',
   },
+  {
+    id: 9,
+    name: 'Rümeysa',
+    surname: 'Karagöz',
+    birthdate: '03.04',
+    title: 'Intern',
+  },
 ]

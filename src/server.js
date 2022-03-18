@@ -11,6 +11,7 @@ app.get('/team', (req, res) => {
 app.get('/team/:id', (req, res) => {
   const id = req.params.id
   const searchResult = teamMembers.find((member) => member.id == id)
+
   if (searchResult) {
     res.send(searchResult)
   } else {
