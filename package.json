@@ -14,16 +14,31 @@
     "prepare": "husky install",
     "prettier": "prettier --write .",
     "lint": "lint-staged",
-    "eslint": "eslint ."
+    "eslint": "eslint .",
+    "dev": "webpack --watch --mode=development",
+    "prod": "webpack --mode=production",
+    "wp:start": "webpack serve"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
+    "css-minimizer-webpack-plugin": "^4.0.0",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "html-webpack-plugin": "^5.5.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.5",
+    "mini-css-extract-plugin": "^2.6.0",
     "nodemon": "^2.0.15",
-    "prettier": "^2.5.1"
+    "path": "^0.12.7",
+    "prettier": "^2.5.1",
+    "terser-webpack-plugin": "^5.3.1",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
   },
   "lint-staged": {
     "*.js": [

@@ -7,8 +7,8 @@
     <title>Member List Page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <script src="/src/js/index.js" async></script>
-    <link rel="stylesheet" href="/src/css/style.css" />
+
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
     <link
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap"
       rel="stylesheet"
@@ -54,7 +54,7 @@
             "
           >
             <button id="submitButton">Submit</button>
-            <button onclick="closeUpdate()">Cancel</button>
+            <button id="modalCloseButton">Cancel</button>
           </div>
           <p class="success-text">Update Successful</p>
         </div>
@@ -62,7 +62,7 @@
     </dialog>
     <div class="header">
       <h1>Member List</h1>
-      <button onclick="addMember()">Add New Member</button>
+      <button id="newMemberButton">Add New Member</button>
     </div>
     <div class="search-bar">
       <input
@@ -89,4 +89,5 @@
       </table>
     </div>
   </body>
+  <!-- <script src="dist/main.js"></script> -->
 </html>

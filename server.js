@@ -11,7 +11,7 @@ const app = express()
 let response = {}
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(express.static('public'))
+app.use(express.static('dist'))
 
 app.get('/api/team', (req, res) => {
   const { s } = req.query

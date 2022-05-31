@@ -1,13 +1,29 @@
+'use strict'
+import './../css/style.css'
+
 const notification = document.querySelector('.message')
 const dialog = document.querySelector('dialog')
 const successMessage = document.querySelector('.success-text')
-const submitButton = document.querySelector('#submitButton')
 const successBox = document.querySelector('.message-box')
 const inputs = document.querySelectorAll('input')
 const searchBar = document.querySelector('#search')
+
+const submitButton = document.querySelector('#submitButton')
+const newMemberButton = document.querySelector('#newMemberButton')
+const modalCloseButton = document.querySelector('#modalCloseButton')
+
 searchBar.onkeyup = (e) => {
   search(e.target.value)
 }
+
+newMemberButton.onclick = () => {
+  addMember()
+}
+
+modalCloseButton.onclick = () => {
+  closeUpdate()
+}
+
 searchBar.autocomplete = 'off'
 successBox.classList.add('d-none')
 
@@ -36,40 +52,8 @@ const getMember = async (id) => {
   inputs.forEach((input) => {
     input.value = member[input.name] ?? input.value
   })
-  submitButton.setAttribute('onclick', 'updateMember()')
-}
-
-const search = async (s) => {
-  const res = await fetch('/api/team?s=' + s)
-  const data = await res.json()
-  const { members, message } = data
-  const table = document.querySelector('table')
-  const tbody = document.querySelector('tbody')
-  if (tbody) {
-    table.removeChild(tbody)
-  }
-  if (members.length) {
-    const tableData = members
-      .map(
-        (member) =>
-          `<tr><th>${member.name}</th><th>${member.surname}</th><th>${
-            member.birthdate
-          }</th><th>${
-            member.title
-          }</th><th><span class="action" onclick="deleteMember(${member.id.toString()})">Delete</span> - <span class="action" onclick="getMember(${
-            member.id
-          })">Update</span></th></tr>`
-      )
-      .join('')
-
-    const htmlObject = document.createElement('tbody')
-    htmlObject.innerHTML = tableData
-    table.appendChild(htmlObject)
-  } else {
-    const tableData = `<tr><th><h3 class="search-bar">${message}</h3></th></tr>`
-    const htmlObject = document.createElement('tbody')
-    htmlObject.innerHTML = tableData
-    table.appendChild(htmlObject)
+  submitButton.onclick = () => {
+    updateMember()
   }
 }
 
@@ -111,32 +95,11 @@ const loadMembers = async () => {
   const res = await fetch('/api/team')
   const data = await res.json()
   const { members } = data
-  const table = document.querySelector('table')
-  const tbody = document.querySelector('tbody')
-  if (tbody) {
-    table.removeChild(tbody)
-  }
-  const tableData = members
-    .map(
-      (member) =>
-        `<tr><th>${member.name}</th><th>${member.surname}</th><th>${
-          member.birthdate
-        }</th><th>${
-          member.title
-        }</th><th><span class="action" onclick="deleteMember(${member.id.toString()})">Delete</span> - <span class="action" onclick="getMember(${
-          member.id
-        })">Update</span></th></tr>`
-    )
-    .join('')
-
-  const htmlObject = document.createElement('tbody')
-  htmlObject.innerHTML = tableData
-  table.appendChild(htmlObject)
+  tableMaker(members)
 }
 
 const addMemberFetch = async () => {
   let data = {}
-
   inputs.forEach((input) => {
     if (input.name !== 'id') {
       data = { ...data, [input.name]: input.value }
@@ -160,11 +123,56 @@ const addMemberFetch = async () => {
 
 const addMember = async () => {
   dialog.setAttribute('open', 'true')
-  submitButton.setAttribute('onclick', 'addMemberFetch()')
+  submitButton.onclick = () => {
+    addMemberFetch()
+  }
+
   const form = document.querySelector('.form')
   form.children[0].innerHTML = 'New Member Form'
   const idInput = inputs[0]
   idInput.parentElement.style.display = 'none'
 }
 
+const search = async (s) => {
+  const res = await fetch('/api/team?s=' + s)
+  const data = await res.json()
+  const { members, message } = data
+  tableMaker(members, message)
+}
+
+const tableMaker = (members, message = '') => {
+  const table = document.querySelector('table')
+  const tbody = document.querySelector('tbody')
+  if (tbody) {
+    table.removeChild(tbody)
+  }
+  if (members.length) {
+    const tableData = members
+      .map(
+        (member) =>
+          `<tr><th>${member.name}</th><th>${member.surname}</th><th>${member.birthdate}</th><th>${member.title}</th><th><span class="action"  id="delete-${member.id}" >Delete</span> - <span class="action" id="update-${member.id}" >Update</span></th></tr>`
+      )
+      .join('')
+
+    const htmlObject = document.createElement('tbody')
+    htmlObject.innerHTML = tableData
+    table.appendChild(htmlObject)
+    members.map((member) => {
+      const id = member.id
+      const updateButton = document.querySelector(`#update-${id}`)
+      const deleteButton = document.querySelector(`#delete-${id}`)
+      deleteButton.onclick = () => {
+        deleteMember(id)
+      }
+      updateButton.onclick = () => {
+        getMember(id)
+      }
+    })
+  } else {
+    const tableData = `<tr><th><h3 class="search-bar">${message}</h3></th></tr>`
+    const htmlObject = document.createElement('tbody')
+    htmlObject.innerHTML = tableData
+    table.appendChild(htmlObject)
+  }
+}
 loadMembers()
