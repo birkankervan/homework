@@ -13,7 +13,6 @@
         "start": "NODE_ENV=production node server.js",
         "dev": "node server.js",
         "build": "webpack --config webpack.prod.cjs",
-        "production": "yarn build && yarn start",
         "prepare": "husky install",
         "prettier": "prettier --write .",
         "lint": "lint-staged",

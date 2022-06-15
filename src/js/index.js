@@ -177,4 +177,4 @@ const tableMaker = (members, message = '') => {
 }
 loadMembers()
 
-console.log('kkkk')
+console.log('dadasda')
