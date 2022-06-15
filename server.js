@@ -26,7 +26,6 @@ if (process.env.NODE_ENV !== 'production') {
     )
     app.use(webpackHotMiddleware(compiler))
 }
-console.log(process.env.NODE_ENV)
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
