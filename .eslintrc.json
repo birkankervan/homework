@@ -1,14 +1,14 @@
 {
-  "env": {
-    "es2022": true,
-    "browser": true,
-    "node": true
-  },
-  "extends": ["prettier"],
-  "plugins": ["prettier"],
-  "parserOptions": {
-    "ecmaVersion": 2020,
-    "sourceType": "module"
-  },
-  "rules": {}
+    "env": {
+        "es2022": true,
+        "browser": true,
+        "node": true
+    },
+    "extends": ["prettier"],
+    "plugins": ["prettier"],
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "rules": {}
 }
